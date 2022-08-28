@@ -3,7 +3,7 @@ body {
     background-color: black;
 }
 
-.paddle {
+.game {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
