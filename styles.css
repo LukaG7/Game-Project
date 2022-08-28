@@ -1,34 +1,44 @@
-*, *::after, *::before {
-    box-sizing: border-box;
-}
 
 body {
     background-color: #392F5A;
-    margin: 0;
 }
 
 .paddle {
-    --position: 50;
-
-    position: absolute;
-    background-color: #8c8899;
-    top: calc(var(--position) * 1vh); 
-    transform: translateY(-50%);
-    width: 1vh;
-    height: 10vh;
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 90vh;
 }
 
 .paddle-one {
-   left: 1vw; 
+    background-color: #8c8899;
+    width: 1vh;
+    height: 12vh;
 }
 
 .paddle-two {
-    right: 1vw;
+    background-color: #8c8899;
+    width: 1vh;
+    height: 12vh;
 }
 
-.ball {}
+.ball {
+    height: 1.5vh;
+    width: 1.5vh;
+    background-color: #8c8899;
+    display: flex;
+}
 
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p1-score {
+    
+}
 
 
 
