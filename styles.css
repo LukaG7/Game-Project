@@ -1,0 +1,57 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #392F5A;
+    margin: 0;
+}
+
+.paddle {
+    --position: 50;
+
+    position: absolute;
+    background-color: #8c8899;
+    top: calc(var(--position) * 1vh); 
+    transform: translateY(-50%);
+    width: 1vh;
+    height: 10vh;
+    
+}
+
+.paddle-one {
+   left: 1vw; 
+}
+
+.paddle-two {
+    right: 1vw;
+}
+
+.ball {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
