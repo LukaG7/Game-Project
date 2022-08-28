@@ -8,17 +8,21 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 90vh;
+    height: 80vh;
+    border-style: solid;
+    border-color: white;
 }
 
 .paddle-one {
     background-color: rgb(73, 217, 243);
+    margin-left: 1vh;
     width: 1vh;
     height: 12vh;
 }
 
 .paddle-two {
     background-color: rgb(236, 79, 210);
+    margin-right: 1vh;
     width: 1vh;
     height: 12vh;
 }
@@ -38,6 +42,21 @@ body {
     font-size: larger;
 }
 
+.header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+.vice {
+    color: rgb(73, 217, 243);
+    padding-right: 5px;
+}
+
+.pong {
+    color: rgb(236, 79, 210);
+    padding-left: 5px;
+}
 
 
 
