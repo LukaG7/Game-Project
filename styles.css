@@ -51,11 +51,13 @@ body {
 .vice {
     color: rgb(73, 217, 243);
     padding-right: 5px;
+    font-size: 5vh;
 }
 
 .pong {
     color: rgb(236, 79, 210);
     padding-left: 5px;
+    font-size: 5vh;
 }
 
 
