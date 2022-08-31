@@ -46,6 +46,7 @@ function ball() {
 ball()
 
 window.addEventListener('keydown', (event) => {
+    console.log(event.key)
     switch(event.key){
         case 'w': ctx.clearRect(0,0, 1000, 500); playerOne.y-=20; playerOne.draw(); playerTwo.draw(); ball();
         break;
@@ -57,5 +58,6 @@ window.addEventListener('keydown', (event) => {
         break;
     } 
 })
+
 
 
