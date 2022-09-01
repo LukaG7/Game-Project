@@ -1,5 +1,8 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d")
+window.onload = () => {
+    startGame();
+  };
 
 // function draw() {
 //     const canvas = document.getElementById("game");
@@ -34,27 +37,65 @@ playerOne.draw()
 const playerTwo = new Player(990, 200, 8, 80, ctx, 'rgb(236, 79, 210)')
 playerTwo.draw()
 
-function ball() {
-    const canvas = document.getElementById("game");
-    const ctx = canvas.getContext("2d")
-
-    ctx.fillStyle = 'white';
-    ctx.fillRect(500, 250, 10, 10)
-
-}
-
-ball()
 const ballTwo = {
     x: 500,
     y: 300,
     width: 10,
     height: 10,
+    vx: Math.random() < 0.5 ? -1 : 1,
+    vy: Math.random() < 0.5 ? -1 : 1,
     draw(){
         ctx.fillStyle = 'white';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.fillRect(this.x, this.y, this.width, this.height, );
+    },
+
+    velocity(){
+        ballTwo.x += ballTwo.vx;
+        ballTwo.y += ballTwo.vy;
+    },
+
+    collision(){
+        if(ballTwo.x + ballTwo.width + ballTwo.vx >= canvas.width){
+            ballTwo.vx--
+            ballTwo.vy=0 
+        } else if 
+            (ballTwo.y + ballTwo.height + ballTwo.vy >= canvas.height) {
+                ballTwo.vy-=2
+            }
+            // else if(ballTwo.y + ballTwo.height + ballTwo.vy <= canvas.height){
+            // ballTwo.vy+=2
+        else if (ballTwo.x + ballTwo.width + ballTwo.vx <= 10){
+            ballTwo.vx++
+         }
+
+
+    },
+
+    stopVelocity(){
+        
     }
+
+    // moveLeft(){
+    //     ballTwo.x 
+    // }
 }
-ballTwo.draw();
+
+function startGame() {
+    ballTwo.draw()
+    update()
+}
+
+
+function update() {
+    ballTwo.velocity();
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    playerOne.draw();
+    playerTwo.draw();
+    ballTwo.draw();
+    ballTwo.collision();
+    requestAnimationFrame(update);
+}
+
 
 window.addEventListener('keydown', (event) => {
     console.log(event.key)
