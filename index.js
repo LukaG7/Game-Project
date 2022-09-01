@@ -44,20 +44,29 @@ function ball() {
 }
 
 ball()
+const ballTwo = {
+    x: 500,
+    y: 300,
+    width: 10,
+    height: 10,
+    draw(){
+        ctx.fillStyle = 'white';
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+}
+ballTwo.draw();
 
 window.addEventListener('keydown', (event) => {
     console.log(event.key)
     switch(event.key){
-        case 'w': ctx.clearRect(0,0, 1000, 500); playerOne.y-=20; playerOne.draw(); playerTwo.draw(); ball();
+        case 'w': ctx.clearRect(0,0, 1000, 500); playerOne.y-=20; playerOne.draw(); playerTwo.draw(); ball(); console.log(canvas.height, playerOne.y); if(playerOne.y <= 0){return playerOne.y = 20};
         break;
-        case 's': ctx.clearRect(0,0, 1000, 500); playerOne.y+=20; playerOne.draw(); playerTwo.draw(); ball();
+        case 's': ctx.clearRect(0,0, 1000, 500); playerOne.y+=20; playerOne.draw(); playerTwo.draw(); ball(); if(playerOne.y >= 420){return playerOne.y = 400}
         break;
-        case 'ArrowUp': ctx.clearRect(0,0, 1000, 500); playerTwo.y-=20; playerTwo.draw(); playerOne.draw(); ball();
+        case 'ArrowUp': ctx.clearRect(0,0, 1000, 500); playerTwo.y-=20; playerTwo.draw(); playerOne.draw(); ball(); if(playerTwo.y <= 0){return playerTwo.y = 20};
         break;
-        case 'ArrowDown': ctx.clearRect(0,0, 1000, 500); playerTwo.y+=20; playerTwo.draw(); playerOne.draw(); ball();
+        case 'ArrowDown': ctx.clearRect(0,0, 1000, 500); playerTwo.y+=20; playerTwo.draw(); playerOne.draw(); ball();console.log(canvas.height, playerTwo.y); if(playerTwo.y >= 420){return playerTwo.y = 400}
         break;
     } 
 })
-
-
 
