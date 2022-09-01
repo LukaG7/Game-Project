@@ -55,21 +55,71 @@ const ballTwo = {
     },
 
     collision(){
-        if(ballTwo.x + ballTwo.width + ballTwo.vx >= canvas.width){
-            ballTwo.vx--
-            ballTwo.vy=0 
-        } else if 
-            (ballTwo.y + ballTwo.height + ballTwo.vy >= canvas.height) {
-                ballTwo.vy-=2
-            }
-            // else if(ballTwo.y + ballTwo.height + ballTwo.vy <= canvas.height){
-            // ballTwo.vy+=2
-        else if (ballTwo.x + ballTwo.width + ballTwo.vx <= 10){
-            ballTwo.vx++
-         }
-
-
+        if(ballTwo.y <= 0) {
+            //checks for top of screen
+            ballTwo.vy = -ballTwo.vy
+        }
+        if(ballTwo.y + ballTwo.height >= canvas.height){
+            //checks for bottom of screen
+            ballTwo.vy = -ballTwo.vy
+        }
+        if(ballTwo.x <= 0){
+            //checks for left side of screen
+            console.log('blue player loses');
+            let myScore = document.querySelector('#score2');
+            myScore.textContent = Number(myScore.textContent) +1
+            ballTwo.vx = Math.random() < 0.5 ? -1 : 1;
+            ballTwo.vy = Math.random() < 0.5 ? -1 : 1;
+            ballTwo.x = 500;
+            ballTwo.y = 300;
+        }
+        if(ballTwo.x + ballTwo.width >= canvas.width){
+            //checks for right side of screen
+            console.log('pink player loses');
+            let myScore = document.querySelector('#score1');
+            myScore.textContent = Number(myScore.textContent) +1
+            ballTwo.vx = Math.random() < 0.5 ? -1 : 1;
+            ballTwo.vy = Math.random() < 0.5 ? -1 : 1;
+            ballTwo.x = 500;
+            ballTwo.y = 300;
+        }
+        if (playerOne.x < ballTwo.x + ballTwo.width &&
+            playerOne.x + playerOne.width > ballTwo.x &&
+            playerOne.y < ballTwo.y + ballTwo.height &&
+            playerOne.height + playerOne.y > ballTwo.y){
+          // Collision detected!
+          console.log('Blue Player Collision')
+          ballTwo.vx = -ballTwo.vx
+          
+        }
+        if (playerTwo.x < ballTwo.x + ballTwo.width &&
+            playerTwo.x + playerTwo.width > ballTwo.x &&
+            playerTwo.y < ballTwo.y + ballTwo.height &&
+            playerTwo.height + playerTwo.y > ballTwo.y){
+          // Collision detected!
+          console.log('Pink Player Collision')
+          ballTwo.vx = -ballTwo.vx
+          
+        }
+      
     },
+
+    // collision(){
+    //     if(ballTwo.x + ballTwo.width + ballTwo.vx >= canvas.width){
+    //         ballTwo.vx--
+    //         ballTwo.vy=0 
+    //     } else if 
+    //         (ballTwo.y + ballTwo.height + ballTwo.vy >= canvas.height) {
+    //             ballTwo.vy-=2
+    //         }
+    //         // else if(ballTwo.y + ballTwo.height + ballTwo.vy <= canvas.height){
+    //         // ballTwo.vy+=2
+    //     else if (ballTwo.x + ballTwo.width + ballTwo.vx <= 10){
+    //         ballTwo.vx++
+    //      }
+
+
+    // },
 
     stopVelocity(){
         
@@ -100,13 +150,13 @@ function update() {
 window.addEventListener('keydown', (event) => {
     console.log(event.key)
     switch(event.key){
-        case 'w': ctx.clearRect(0,0, 1000, 500); playerOne.y-=20; playerOne.draw(); playerTwo.draw(); ball(); console.log(canvas.height, playerOne.y); if(playerOne.y <= 0){return playerOne.y = 20};
+        case 'w': ctx.clearRect(0,0, 1000, 500); playerOne.y-=10; playerOne.draw(); playerTwo.draw();  console.log(canvas.height, playerOne.y); if(playerOne.y <= 0){return playerOne.y = 0};
         break;
-        case 's': ctx.clearRect(0,0, 1000, 500); playerOne.y+=20; playerOne.draw(); playerTwo.draw(); ball(); if(playerOne.y >= 420){return playerOne.y = 400}
+        case 's': ctx.clearRect(0,0, 1000, 500); playerOne.y+=10; playerOne.draw(); playerTwo.draw();  if(playerOne.y + playerOne.height >= 500){return playerOne.y = 420}
         break;
-        case 'ArrowUp': ctx.clearRect(0,0, 1000, 500); playerTwo.y-=20; playerTwo.draw(); playerOne.draw(); ball(); if(playerTwo.y <= 0){return playerTwo.y = 20};
+        case 'ArrowUp': ctx.clearRect(0,0, 1000, 500); playerTwo.y-=10; playerTwo.draw(); playerOne.draw();  if(playerTwo.y <= 0){return playerTwo.y = 0};
         break;
-        case 'ArrowDown': ctx.clearRect(0,0, 1000, 500); playerTwo.y+=20; playerTwo.draw(); playerOne.draw(); ball();console.log(canvas.height, playerTwo.y); if(playerTwo.y >= 420){return playerTwo.y = 400}
+        case 'ArrowDown': ctx.clearRect(0,0, 1000, 500); playerTwo.y+=10; playerTwo.draw(); playerOne.draw();console.log(canvas.height, playerTwo.y); if(playerTwo.y + playerTwo.height >= 500){return playerTwo.y = 420}
         break;
     } 
 })
