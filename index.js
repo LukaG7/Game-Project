@@ -4,19 +4,6 @@ window.onload = () => {
     startGame();
   };
 
-// function draw() {
-//     const canvas = document.getElementById("game");
-//     const ctx = canvas.getContext("2d");
-
-//     ctx.fillStyle = 'rgb(73, 217, 243)';
-//     ctx.fillRect(3, 0, 8, 80);
-    
-//     ctx.fillStyle = 'rgb(236, 79, 210)';
-//     ctx.fillRect(990, 0, 8, 80);
-// }
-
-// draw()
-
 class Player { constructor(x, y, width, height, ctx, color){
     this.x = x,
     this.y = y,
@@ -89,8 +76,7 @@ const ballTwo = {
             playerOne.height + playerOne.y > ballTwo.y){
           // Collision detected!
           console.log('Blue Player Collision')
-          ballTwo.vx = -ballTwo.vx
-          
+          ballTwo.vx = -ballTwo.vx          
         }
         if (playerTwo.x < ballTwo.x + ballTwo.width &&
             playerTwo.x + playerTwo.width > ballTwo.x &&
@@ -99,42 +85,20 @@ const ballTwo = {
           // Collision detected!
           console.log('Pink Player Collision')
           ballTwo.vx = -ballTwo.vx
-          
         }
       
     },
 
-    // collision(){
-    //     if(ballTwo.x + ballTwo.width + ballTwo.vx >= canvas.width){
-    //         ballTwo.vx--
-    //         ballTwo.vy=0 
-    //     } else if 
-    //         (ballTwo.y + ballTwo.height + ballTwo.vy >= canvas.height) {
-    //             ballTwo.vy-=2
-    //         }
-    //         // else if(ballTwo.y + ballTwo.height + ballTwo.vy <= canvas.height){
-    //         // ballTwo.vy+=2
-    //     else if (ballTwo.x + ballTwo.width + ballTwo.vx <= 10){
-    //         ballTwo.vx++
-    //      }
-
-
-    // },
-
     stopVelocity(){
         
     }
-
-    // moveLeft(){
-    //     ballTwo.x 
-    // }
 }
+
 
 function startGame() {
     ballTwo.draw()
     update()
 }
-
 
 function update() {
     ballTwo.velocity();
@@ -145,7 +109,6 @@ function update() {
     ballTwo.collision();
     requestAnimationFrame(update);
 }
-
 
 window.addEventListener('keydown', (event) => {
     console.log(event.key)
@@ -160,4 +123,3 @@ window.addEventListener('keydown', (event) => {
         break;
     } 
 })
-
